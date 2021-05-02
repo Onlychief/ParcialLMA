@@ -37,10 +37,10 @@ def agregar_session():
     return redirect(url_for('sessiones'))
 
 @app.route('/edits/<id>', methods = ['POST', 'GET'])
-def get_session():
+def get_session(id):
     sessionModel = SessionModel()
-    session = sessionModel.editar_session()
-    return render_template('sessiones/update.html', data=session[0])
+    session = sessionModel.editar_session(id)
+    return render_template('sessiones/update.html', data=session)
 
 
 @app.route('/actualizar/<id>', methods=['POST'])
@@ -50,10 +50,24 @@ def update_session(id):
         fecha = request.form['fecha']
         hora_ini = request.form['hora_ini']
         hora_fin = request.form['hora_fin']
-        
+        asistencia = request.form['asistencia']
         updateModel = SessionModel()
-        update = updateModel.update_session()
+        update = updateModel.update_session(materia, fecha, hora_ini,hora_fin, asistencia, id)
         
         flash('Operacion ¡Exitosa!')
         return redirect(url_for('sessiones'))
 
+@app.route('/deletes/<string:id>', methods = ['POST','GET'])
+def delete_session(id):
+    cur = mysql.get_db().cursor()
+    cur.execute('DELETE FROM session WHERE id = {0}'.format(id))
+    mysql.get_db().commit()
+    flash('Session Eliminada Satisfactoriamente')
+    return redirect(url_for('sessiones'))
+
+@app.route('/asistencia', methods =['GET', 'POST'])
+def asistencia():
+    asistenciaModel = SessionModel()
+    asistencia = asistenciaModel.asistencia()
+
+    return render_template('sessiones/asistencia.html', data=asistencia)

@@ -23,10 +23,10 @@
                 <td>{{ s.2 }}</td>
                 <td>{{ s.3 }}</td>
                 <td>{{ s.4 }}</td>
-                <td>{{ s.5 }}</td>
+                <td><a href="{{ url_for('asistencia') }}" class="btn btn-success">Ver</a></td>
                 
-                <td><a href="/edits/{{s.0}}" class="btn btn-success">Editar</a>
-                    <a href="/delete/{{s.0}}" class="btn btn-danger">Borrar</a>
+                <td>
+                    <a href="/deletes/{{s.0}}" class="btn btn-danger">Borrar</a>
                 </td>
             </tr>
             {%endfor%}
