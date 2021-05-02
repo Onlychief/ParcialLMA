@@ -1,0 +1,42 @@
+{% extends 'layouts/base.html' %} 
+{% block titulo %} Editar Estudiante {% endblock %} 
+
+{% block contenido %}
+
+<div class="overlay">
+    <form action="/update/{{alumno.0}}" method="POST">
+        <div class="con">
+            <header class="head-form">
+                <h1>Editar Estudiante</h1>
+            </header>
+            <div class="field-set">
+                <br>
+                <br>
+                <label style="margin-right: 5.5rem" for="">Identifiacion</label><input class="form-control" id="txt-input"
+                type="text" name="cc" placeholder="" value="{{ alumno.1 }}"><br>
+                <label style="margin-right: 3.5rem" for="">Nombre</label><input class="form-control" id="txt-input"
+                    type="text" name="nombre" placeholder="" value="{{ alumno.2 }}"><br>
+                <label style="margin-right: 1.5rem" for="">Apellido</label><input class="form-control" id="txt-input"
+                    type="text" name="apellido" placeholder="" value="{{ alumno.3 }}"><br>
+                <label style="margin-right: 3.7rem" for="">celular</label><input class="form-control" id="txt" type="text"
+                    name="celular" placeholder="" value="{{ alumno.4 }}"><br>
+                <label style="margin-right: 4rem" for="">Email</label><input class="form-control" type="text" id="pwd"
+                    name="email" placeholder="" value="{{ alumno.5 }}"><br>
+                <label style="margin-right: 2.5rem" for="">Semestre</label><input class="form-control" type="text"
+                    id="pwd" name="semestre" placeholder="" value="{{ alumno.6 }}"><br>
+                
+                <label for="materia">Materia</label><select class="form-select" name="materia">
+                    {% for a in data %}
+                    <option value="" selected disabled>Seleccione Materia</option>
+                    
+                    <option value="{{ a.1 }}">{{ a.1 }}</option>
+                    {% endfor %}
+                </select><br>
+                    <button type="submit" class="btn btn-primary">
+                    Actualizar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock%}

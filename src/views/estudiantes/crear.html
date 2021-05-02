@@ -1,0 +1,66 @@
+{% extends 'layouts/base.html' %} 
+{% block titulo %} Crear Productos {% endblock %} 
+
+{% block contenido %}
+<h1>Agregar Estudiante</h1>
+<a href="{{ url_for('estudiantes') }}">volver</a>
+
+<form action="{{ url_for('agregar_alumno') }}" method="POST">
+    <div class="mb-3">
+        <label for="cc">Identificacion</label>
+        <input type="text" required class="form-control" id="cc" name="cc">
+    </div>
+    
+    <div class="mb-3">
+        <label for="nombre">Nombre</label>
+        <input type="text" required class="form-control" id="nombre" name="nombre">
+    </div>
+
+    <div class="mb-3">
+        <label for="apellido">Apellido</label>
+        <input type="text" required class="form-control" 
+            id="apellido" 
+            name="apellido"></input>
+    </div>
+    
+    <div class="mb-3">
+        <label for="celular">Celular</label>
+        <input type="text" required class="form-control" id="celular" name="celular">
+    </div>
+
+    <div class="mb-3">
+        <label for="email">Email</label>
+        <input type="text" required class="form-control" id="email" name="email">
+    </div>
+
+    <div class="mb-3">
+        <label for="semestre">Semestre</label>
+        <select class="form-select" required id="semestre" name="semestre">
+            <option selected value="">Selecione el Semestre</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select>
+    </div>
+
+    <label for="materia">Materia</label><select class="form-select" name="materia">
+        <option value="" selected disabled>Seleccione Materia</option>
+        {% for a in data %}
+        <option value="{{ a.1 }}">{{ a.1 }}</option>
+        {% endfor %}
+    </select><br>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+
+
+</script>
+{% endblock%}

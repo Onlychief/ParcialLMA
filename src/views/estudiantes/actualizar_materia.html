@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %} 
+{% block titulo %} Editar Materia {% endblock %} 
+
+{% block contenido %}
+<h1>Editar Materia</h1>
+<a href="{{ url_for('materias') }}">volver</a>
+
+<form action="/updatem/{{materia.0}}" method="POST">
+    <div class="mb-3">
+        <label for="name">Asignatura</label>
+        <input type="text" value="{{materia.1}}" class="form-control" id="name" name="name">
+    </div>
+    <div class="mb-3">
+        <label for="semester">Semestre</label>
+        <select class="form-select" required id="semester" name="semester">
+            <option selected value="{{materia.2}}">{{materia.2}}</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select>
+    </div>
+    
+    
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+
+{% endblock%}

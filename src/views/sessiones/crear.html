@@ -1,0 +1,51 @@
+{% extends 'layouts/base.html' %} 
+{% block titulo %} Crear Session {% endblock %} 
+
+{% block contenido %}
+<h1>Crear Session</h1>
+
+
+<form action="{{ url_for('agregar_session') }}" method="POST">
+
+    <br>
+    <br>
+    <label style="margin-right: 3rem" for="">Materia</label>
+    <select class="form-select" required name="materia">
+        <option value="0">Seleccione Materia</option>
+        {% for m in data %}
+        <option value="{{m.1}}">{{m.1}}</option>
+        {%endfor%}
+    </select><br>
+    <div class="mb-3">
+        <label for="fecha">Fecha</label>
+        <input type="date"  class="form-control" id="fecha" name="fecha">
+    </div>
+    <div class="mb-3">
+        <label for="hora_ini">Hora inicial</label>
+        <input type="time"  class="form-control" id="hora_ini" name="hora_ini">
+    </div>
+    <div class="mb-3">
+        <label for="hora_fin">Hora Final</label>
+        <input type="time"  class="form-control" id="hora_fin" name="hora_fin">
+    </div>
+    
+    
+
+    <button type="submit" class="btn btn-primary">
+        Crear Session
+    </button>
+
+
+</form>
+
+{% endblock%}
+
+
+<style>
+    #fecha, #hora_ini, #hora_fin, #id_materia{
+    background-color: white;
+    }
+    label{
+    color: white;
+    }
+</style>
