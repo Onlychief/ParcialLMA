@@ -25,11 +25,13 @@
                 <label style="margin-right: 2.5rem" for="">Semestre</label><input class="form-control" type="text"
                     id="pwd" name="semestre" placeholder="" value="{{ alumno.6 }}"><br>
                 
-                <label for="materia">Materia</label><select class="form-select" name="materia">
+                <label for="materia">Materia</label>
+                <select class="form-select" required id="materia" name="materia">
+                    
                     {% for a in data %}
-                    <option value="" selected disabled>Seleccione Materia</option>
                     
                     <option value="{{ a.1 }}">{{ a.1 }}</option>
+                    
                     {% endfor %}
                 </select><br>
                     <button type="submit" class="btn btn-primary">

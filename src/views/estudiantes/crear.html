@@ -1,5 +1,5 @@
 {% extends 'layouts/base.html' %} 
-{% block titulo %} Crear Productos {% endblock %} 
+{% block titulo %} Crear Alumno {% endblock %} 
 
 {% block contenido %}
 <h1>Agregar Estudiante</h1>
@@ -52,7 +52,7 @@
 
     <label for="materia">Materia</label><select class="form-select" name="materia">
         <option value="" selected disabled>Seleccione Materia</option>
-        {% for a in data %}
+        {% for a in data2 %}
         <option value="{{ a.1 }}">{{ a.1 }}</option>
         {% endfor %}
     </select><br>

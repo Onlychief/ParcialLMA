@@ -9,9 +9,8 @@ app.secret_key = "mysecretkey"
 @app.route('/estudiantes', methods=['GET'])
 def estudiantes():
     alumnoModel = AlumnoModel()
-
     alumno = alumnoModel.mostrar_estudiantes()
-   
+    
     return render_template('estudiantes/index.html', alumno = alumno)
 
 @app.route('/show_materias', methods =['GET', 'POST'])
@@ -32,7 +31,7 @@ def agregar_alumno():
        #mostramos el formulario de creacion
         materiasModel = MateriasModel()
         materia2 = materiasModel.mostrar_materias()
-        return render_template('estudiantes/crear.html', data=materia2)
+        return render_template('estudiantes/crear.html', data2=materia2)
 
     cc = request.form.get('cc')
     nombre = request.form.get('nombre')
@@ -52,7 +51,10 @@ def get_student(id):
     data = cur.fetchall()
     cur.close()
     print(data[0])
-    return render_template('estudiantes/actualizar_estudiante.html', alumno = data[0])
+
+    materiasModel = MateriasModel()
+    materia = materiasModel.mostrar_materias()
+    return render_template('estudiantes/actualizar_estudiante.html', alumno = data[0], data=materia)
 
 
 @app.route('/update/<id>', methods=['POST'])
